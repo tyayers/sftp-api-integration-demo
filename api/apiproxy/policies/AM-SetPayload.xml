@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-SetPayload">
+  <DisplayName>AM-SetPayload</DisplayName>
+  <Properties/>
+  <Remove>
+    <QueryParams>
+      <QueryParam name="date"/>
+      <QueryParam name="file"/>
+    </QueryParams>
+  </Remove>
+  <Set>
+    <Headers>
+      <Header name="Content-Type">application/json</Header>
+    </Headers>
+    <Verb>POST</Verb>
+    <Payload>
+{
+  "trigger_id":"api_trigger/sftp-processor_API_1",
+  "inputParameters": {
+		"date": {
+			"stringValue": "{date}"
+		},
+		"file": {
+			"stringValue": "{file}"
+		}
+	}
+}
+    </Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
