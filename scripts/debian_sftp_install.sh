@@ -7,11 +7,11 @@ sudo useradd -m -g sftpusers -s /bin/false sftpuser
 sudo sed -i 's/\(PasswordAuthentication\).*/\1 yes/g' sshd_config
 sudo sed -i 's/\(PasswordAuthentication\).*/\1 yes/g' sshd_config
 
-sudo sed -i -e '$a\'$'\n''Match Group sftpusers' sshd_config
-sudo sed -i -e '$a\'$'\n''    X11Forwarding no' sshd_config
-sudo sed -i -e '$a\'$'\n''    AllowTcpForwarding no' sshd_config
-sudo sed -i -e '$a\'$'\n''    ChrootDirectory /sftp/%u' sshd_config
-sudo sed -i -e '$a\'$'\n''    ForceCommand internal-sftp' sshd_config
+sudo sed -i -e '$a\'$'\n''Match Group sftpusers' /etc/ssh/sshd_config
+sudo sed -i -e '$a\'$'\n''    X11Forwarding no' /etc/ssh/sshd_config
+sudo sed -i -e '$a\'$'\n''    AllowTcpForwarding no' /etc/ssh/sshd_config
+sudo sed -i -e '$a\'$'\n''    ChrootDirectory /sftp/%u' /etc/ssh/sshd_config
+sudo sed -i -e '$a\'$'\n''    ForceCommand internal-sftp' /etc/ssh/sshd_config
 
 sudo mkdir -p /sftp/sftpuser/files
 sudo chown root:sftpusers /sftp/sftpuser
