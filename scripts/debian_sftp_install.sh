@@ -4,8 +4,7 @@ sudo useradd -m -g sftpusers -s /bin/false sftpuser
 (echo 'apigeeRocks%12'; echo 'apigeeRocks%12') | sudo passwd sftpuser
 
 # configure sftp subsystem
-sudo sed -i 's/\(PasswordAuthentication\).*/\1 yes/g' sshd_config
-sudo sed -i 's/\(PasswordAuthentication\).*/\1 yes/g' sshd_config
+sudo sed -i 's/\(PasswordAuthentication\).*/\1 yes/g' /etc/ssh/sshd_config
 
 sudo sed -i -e '$a\'$'\n''Match Group sftpusers' /etc/ssh/sshd_config
 sudo sed -i -e '$a\'$'\n''    X11Forwarding no' /etc/ssh/sshd_config
